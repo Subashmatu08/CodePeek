@@ -1,35 +1,103 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
 const vscode = require('vscode');
+const fs = require('fs');
+const path = require('path');
 
-// This method is called when your extension is activated
-// Your extension is activated the very first time the command is executed
+const IgnoreDirectories = [
+  'node_modules',
+  '.git',
+  'dist',
+  'build',
+  'coverage',
+  '.vscode',
+  '.idea',
+  '.cache',
+  'out',
+  'tmp',
+  'temp',
+];
+
+const IgnoreFiles = [
+  '.DS_Store',
+  'Thumbs.db',
+  '.env',
+  'package-lock.json',
+  'yarn.lock',
+  '.eslintcache',
+  '.gitignore',
+];
+
+function getFileStructure(dirPath, indent = '') {
+  let structure = '';
+  const files = fs.readdirSync(dirPath);
+
+  for (const file of files) {
+    const filePath = path.join(dirPath, file);
+    const stats = fs.statSync(filePath);
+
+    if (stats.isDirectory()) {
+      structure += `${indent}📁 ${file}\n`;
+      if (!IgnoreDirectories.includes(file)) {
+        structure += getFileStructure(filePath, indent + '  ');
+      }
+    } else {
+      structure += `${indent}📄 ${file}\n`;
+    }
+  }
+  return structure;
+}
+
+function saveToFile(dirPath, outputPath) {
+  const structure = getFileStructure(dirPath);
+  fs.writeFileSync(outputPath, structure);
+  vscode.window.showInformationMessage(
+    'Context saved as context.txt in your workspace!'
+  );
+
+  addToGitIgnore(dirPath, 'context.txt');
+}
+
+function addToGitIgnore(dirPath, file) {
+  const gitignorePath = path.join(dirPath, '.gitignore');
+  if (fs.existsSync(gitignorePath)) {
+    let gitignoreContent = fs.readFileSync(gitignorePath, 'utf-8');
+
+    if (!gitignoreContent.includes(file)) {
+      gitignoreContent += `\n${file}\n`;
+      fs.writeFileSync(gitignorePath, gitignoreContent);
+    }
+  } else {
+    fs.writeFileSync(gitignorePath, file);
+  }
+}
 
 /**
  * @param {vscode.ExtensionContext} context
  */
 function activate(context) {
-  // Use the console to output diagnostic information (console.log) and errors (console.error)
-  // This line of code will only be executed once when your extension is activated
   console.log('Congratulations, your extension "codepeek" is now active!');
 
-  // The command has been defined in the package.json file
-  // Now provide the implementation of the command with  registerCommand
-  // The commandId parameter must match the command field in package.json
   const disposable = vscode.commands.registerCommand(
-    'codepeek.helloWorld',
+    'codepeek.generateContext',
     function () {
-      // The code you place here will be executed every time your command is executed
+      const rootPath = vscode.workspace.workspaceFolders[0].uri.fsPath;
+      const outputFilePath = path.join(rootPath, 'context.txt');
 
-      // Display a message box to the user
-      vscode.window.showInformationMessage('Hello World from CodePeek!!!');
+      saveToFile(rootPath, outputFilePath);
     }
   );
 
   context.subscriptions.push(disposable);
-}
 
-// This method is called when your extension is deactivated
+  const myStatusBarItem = vscode.window.createStatusBarItem(
+    vscode.StatusBarAlignment.Right,
+    100
+  );
+  myStatusBarItem.command = 'codepeek.generateContext';
+  myStatusBarItem.text = 'Create Context ✨';
+  myStatusBarItem.tooltip = 'Generate a Context file for my workspace';
+  myStatusBarItem.show();
+  context.subscriptions.push(myStatusBarItem);
+}
 function deactivate() {}
 
 module.exports = {

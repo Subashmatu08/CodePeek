@@ -9,13 +9,17 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
+  "activationEvents": [
+    "*"
+  ],
   "main": "./extension.js",
   "contributes": {
-    "commands": [{
-      "command": "codepeek.helloWorld",
-      "title": "Hello World"
-    }]
+    "commands": [
+      {
+        "command": "codepeek.generateContext",
+        "title": "Create Context"
+      }
+    ]
   },
   "scripts": {
     "lint": "eslint .",
