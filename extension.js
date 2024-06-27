@@ -24,10 +24,11 @@ const IgnoreFiles = [
   'yarn.lock',
   '.eslintcache',
   '.gitignore',
+  'context.txt',
 ];
 
 function getFileStructure(dirPath, indent = '') {
-  let structure = '';
+  let structure = 'File Structure:\n\n';
   const files = fs.readdirSync(dirPath);
 
   for (const file of files) {
@@ -149,14 +150,13 @@ function getWebviewContent(files) {
       <form id="fileForm">
         ${fileItems}
         <br>
-        <p>If <span style="color:yellow;">NO</span> files are selected, only the file structure is saved in <span style="color:yellow;">context.txt</span> file</p>
+        <p>If <span style="color:gold;">NO</span> files are selected, only the file structure is saved in <span style="color:gold;">context.txt</span> file</p>
         <button type="button" 
         style="cursor:pointer;
-        background:transparent; 
         border:1px solid white; 
-        padding:0.5rem; 
-        border-radius: 10px; 
-        color:white;" 
+        padding:0.5rem;
+        background-color: grey; 
+        border-radius: 5px;" 
         onclick="generate()">Create Context ✨</button>
       </form>
       <script>

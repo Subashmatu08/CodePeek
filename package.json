@@ -1,7 +1,7 @@
 {
-  "name": "codepeek",
-  "displayName": "CodePeek",
-  "description": "A Peek into your Code",
+  "name": "codepeep",
+  "displayName": "CodePeep",
+  "description": "A Peep into your Code",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.90.0"
@@ -16,7 +16,7 @@
   "contributes": {
     "commands": [
       {
-        "command": "codepeek.generateContext",
+        "command": "codepeep.generateContext",
         "title": "Create Context"
       }
     ]
