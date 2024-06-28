@@ -15,11 +15,19 @@ Welcome to CodePeek, the ultimate Visual Studio Code extension that changes the 
 
 ![Using the Context File](https://raw.githubusercontent.com/Subashmatu08/CodePeek/main/images/vid2.mp4) -->
 
-![Create Context Menu](https://raw.githubusercontent.com/Subashmatu08/CodePeek/main/images/image1.png)
+<!-- ![Create Context Menu](https://raw.githubusercontent.com/Subashmatu08/CodePeek/main/images/image1.png)
 ![File Selection](https://raw.githubusercontent.com/Subashmatu08/CodePeek/main/images/image2.png)
 ![Context.txt File](https://raw.githubusercontent.com/Subashmatu08/CodePeek/main/images/image3.png)
 ![Using ChatGPT with Context](https://raw.githubusercontent.com/Subashmatu08/CodePeek/main/images/image4.png)
-![ChatGPTs' Response having Context](https://raw.githubusercontent.com/Subashmatu08/CodePeek/main/images/image5.png)
+![ChatGPTs' Response having Context](https://raw.githubusercontent.com/Subashmatu08/CodePeek/main/images/image5.png) -->
+
+<p style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;">
+<img src="https://raw.githubusercontent.com/Subashmatu08/CodePeek/main/images/image1.png" width="100%" alt="Create Context Menu">
+<img src="https://raw.githubusercontent.com/Subashmatu08/CodePeek/main/images/image2.png" width="100%" alt="File Selection">
+<img src="https://raw.githubusercontent.com/Subashmatu08/CodePeek/main/images/image3.png" width="100%" alt="Context.txt File">
+<img src="https://raw.githubusercontent.com/Subashmatu08/CodePeek/main/images/image4.png" width="100%" alt="Using ChatGPT with Context">
+<img src="https://raw.githubusercontent.com/Subashmatu08/CodePeek/main/images/image5.png" width="100%" alt="ChatGPTs' Response having Context">
+</p>
 
 **Automatically Ignored Files and Directories:**
 
