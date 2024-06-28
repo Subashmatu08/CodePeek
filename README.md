@@ -1,65 +1,96 @@
-# codepeep README
+# CodePeek 👀
 
-This is the README for your extension "codepeep". After writing up a brief description, we recommend including the following sections.
+Welcome to CodePeek, the ultimate Visual Studio Code extension that changes the way you interact with your code. With CodePeek, effortlessly generate and view a comprehensive contextual overview of your workspace. This powerful tool creates a `context.txt` file that not only maps out the entire structure of your project but also optionally includes the contents of selected files. Designed to seamlessly integrate with your language model (LLM) of choice, CodePeek ensures you have all the context you need when seeking assistance with your code. Elevate your coding efficiency and streamline your development workflow with CodePeek!
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+- **Generate Contextual Overview**: Create a `context.txt` file that lists all directories and files in your workspace, excluding commonly ignored files and directories and adds it into your `.gitignore` automatically.
+- **Select Specific Files**: Choose specific files to include their content in the `context.txt` file.
+- **Integrated UI**: Utilize a simple and intuitive webview panel within VS Code to select the files and directories to be included.
+- **Status Bar Integration**: Easily access the context generation command from the status bar.
 
-For example if there is an image subfolder under your extension project workspace:
+## Usage Examples
 
-\!\[feature X\]\(images/feature-x.png\)
+![File Selection & Context Generation](https://raw.githubusercontent.com/Subashmatu08/CodePeek/main/images/vid1.mp4)
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+![Using the Context File](https://raw.githubusercontent.com/Subashmatu08/CodePeek/main/images/vid2.mp4)
 
-## Requirements
+**Automatically Ignored Files and Directories:**
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+When generating the `context.txt` file, CodePeek automatically ignores certain files and directories to keep the context file clean, relevant and most importantly safe. Here is the list of files and directories that are ignored by default:
+
+### Ignored Directories
+
+- `node_modules`
+- `.git`
+- `dist`
+- `build`
+- `coverage`
+- `.vscode`
+- `.idea`
+- `.cache`
+- `out`
+- `tmp`
+- `temp`
+
+### Ignored Files
+
+- `.DS_Store`
+- `Thumbs.db`
+- `.env`
+- `package-lock.json`
+- `yarn.lock`
+- `.eslintcache`
+- `.gitignore`
+- `context.txt`
+
+## Installation
+
+1. Open Visual Studio Code.
+2. Go to the Extensions view by clicking the Extensions icon in the Activity Bar on the side of the window or by pressing `Ctrl/Cmd+Shift+X`.
+3. Search for `CodePeek`.
+4. Click **Install**.
+
+## Usage
+
+1. Open your workspace in VS Code.
+2. Click on the "Create Context ✨" button in the status bar or run the command `Create Context` from the Command Palette (`Ctrl/Cmd+Shift+P`).
+3. A webview panel will appear, allowing you to select the files you want to include in the `context.txt` file.
+4. Click the **Create Context ✨** button in the webview to generate the file.
 
 ## Extension Settings
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-- `myExtension.enable`: Enable/disable this extension.
-- `myExtension.thing`: Set to `blah` to do something.
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
+This extension currently does not contribute any settings. Future versions may include configurable options for file and directory ignoring patterns.
 
 ## Release Notes
 
-Users appreciate release notes as you update your extension.
-
 ### 1.0.0
 
-Initial release of ...
+- Initial release of CodePeek.
+- Ability to generate `context.txt` file with workspace structure and file contents for giving LLMs context.
 
-### 1.0.1
+## Roadmap
 
-Fixed issue #.
+### Upcoming Features
 
-### 1.1.0
+#### Version 2.0.0 (Soon to be released)
 
-Added features X, Y, and Z.
+1. **Bring Your Own Key (BYOK) for your ChatGPT Account**: Use your own ChatGPT API key for personalized interactions.
+2. **Chat Window within VS Code**: Have a chat window directly in VS Code that already includes the context of your code, allowing seamless interaction with ChatGPT without leaving your workspace.
+3. **Enhanced Workflow**: A more seamless approach to getting your work done efficiently with integrated context-aware assistance.
 
----
+#### Version 3.0.0
 
-## Working with Markdown
+1. **Automatic Error Detection**: Automatically detect errors in the console and trigger an error context button.
+2. **ErrorContext File Creation**: Option to create an `errorcontext.txt` file containing the error and relevant files when an error occurs.
+3. **Chat Window with Error Context**: Directly within VS Code, a chat window will have the error context attached so you can focus on the solution while we handle the relevant information seamlessly.
 
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
+## Feedback and Support
 
-- Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux)
-- Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux)
-- Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets
+We value your feedback and are here to help! If you encounter any issues or have suggestions for improvements, please let us know:
 
-## For more information
+1. Visit our [GitHub Issues page](https://github.com/Subashmatu08/CodePeek/issues) to report a problem or provide feedback.
+2. Describe the issue or suggestion clearly, including steps to reproduce the problem if applicable.
+3. Attach any relevant screenshots or files that might help us understand and address the issue more effectively.
 
-- [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-- [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+Your input is crucial in helping us improve CodePeek and make it even better for the community. Thank you for your support!

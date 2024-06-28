@@ -28,7 +28,7 @@ const IgnoreFiles = [
 ];
 
 function getFileStructure(dirPath, indent = '') {
-  let structure = 'File Structure:\n\n';
+  let structure = '';
   const files = fs.readdirSync(dirPath);
 
   for (const file of files) {
@@ -104,7 +104,7 @@ function addToGitIgnore(dirPath, file) {
 function createWebviewPanel(context, rootPath) {
   const panel = vscode.window.createWebviewPanel(
     'selectFiles',
-    'CodePeep - Select Files',
+    'CodePeek - Select Files',
     vscode.ViewColumn.One,
     { enableScripts: true }
   );
