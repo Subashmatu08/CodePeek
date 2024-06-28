@@ -1,8 +1,9 @@
 {
   "name": "codepeek",
   "displayName": "CodePeek",
-  "description": "A Peep into your Code",
-  "version": "0.0.1",
+  "description": "A Peek into your Code",
+  "icon": "images/icon.png",
+  "version": "1.0.0",
   "engines": {
     "vscode": "^1.90.0"
   },

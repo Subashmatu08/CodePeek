@@ -1,4 +1,4 @@
-# CodePeek 👀
+# CodePeek <span style = "color:#D9BF2A;"></👀></span>
 
 Welcome to CodePeek, the ultimate Visual Studio Code extension that changes the way you interact with your code. With CodePeek, effortlessly generate and view a comprehensive contextual overview of your workspace. This powerful tool creates a `context.txt` file that not only maps out the entire structure of your project but also optionally includes the contents of selected files. Designed to seamlessly integrate with your language model (LLM) of choice, CodePeek ensures you have all the context you need when seeking assistance with your code. Elevate your coding efficiency and streamline your development workflow with CodePeek!
 
