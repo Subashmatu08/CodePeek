@@ -11,9 +11,15 @@ Welcome to CodePeek, the ultimate Visual Studio Code extension that changes the 
 
 ## Usage Examples
 
-![File Selection & Context Generation](https://raw.githubusercontent.com/Subashmatu08/CodePeek/main/images/vid1.mp4)
+<!-- ![File Selection & Context Generation](https://raw.githubusercontent.com/Subashmatu08/CodePeek/main/images/vid1.mp4)
 
-![Using the Context File](https://raw.githubusercontent.com/Subashmatu08/CodePeek/main/images/vid2.mp4)
+![Using the Context File](https://raw.githubusercontent.com/Subashmatu08/CodePeek/main/images/vid2.mp4) -->
+
+![Create Context Menu](https://raw.githubusercontent.com/Subashmatu08/CodePeek/main/images/image1.png)
+![File Selection](https://raw.githubusercontent.com/Subashmatu08/CodePeek/main/images/image2.png)
+![Context.txt File](https://raw.githubusercontent.com/Subashmatu08/CodePeek/main/images/image3.png)
+![Using ChatGPT with Context](https://raw.githubusercontent.com/Subashmatu08/CodePeek/main/images/image4.png)
+![ChatGPTs' Response having Context](https://raw.githubusercontent.com/Subashmatu08/CodePeek/main/images/image5.png)
 
 **Automatically Ignored Files and Directories:**
 
