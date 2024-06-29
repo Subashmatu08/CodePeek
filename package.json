@@ -1,11 +1,12 @@
 {
   "name": "codepeek",
   "displayName": "CodePeek",
-  "description": "A Peek into your Code",
+  "description": "Make AI your best coding ally by providing it with the exact context it needs",
+  "publisher": "SubashMatu",
   "icon": "images/icon.png",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "engines": {
-    "vscode": "^1.90.0"
+    "vscode": "^1.75.1"
   },
   "categories": [
     "Other"
@@ -38,10 +39,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/your-repository-name.git"
+    "url": "https://github.com/Subashmatu08/CodePeek"
   },
   "bugs": {
-    "url": "https://github.com/yourusername/your-repository-name/issues"
+    "url": "https://github.com/Subashmatu08/CodePeek/issues"
   },
-  "homepage": "https://github.com/yourusername/your-repository-name#readme"
+  "homepage": "https://github.com/Subashmatu08/CodePeek#readme"
 }

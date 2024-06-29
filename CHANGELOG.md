@@ -1,9 +1,12 @@
 # Change Log
 
-All notable changes to the "codepeek" extension will be documented in this file.
+### CodePeep 1
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+> [ 1 . 0 . 0 ]
+>
+> - Initial release
 
-## [Unreleased]
-
-- Initial release
+> [ 1 . 0 . 1 ]
+>
+> - Fixed version compatibility
+> - Added more ignored files

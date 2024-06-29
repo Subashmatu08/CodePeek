@@ -4,7 +4,7 @@ Welcome to CodePeek, the ultimate Visual Studio Code extension that changes the 
 
 ## Features
 
-- **Generate Contextual Overview**: Create a `context.txt` file that lists all directories and files in your workspace, excluding commonly ignored files and directories and adds it into your `.gitignore` automatically.
+- **Generate Contextual Overview**: Create a `context.txt` file that lists all directories and files in your workspace. It adds the generated file into `.gitignore` automatically.
 - **Select Specific Files**: Choose specific files to include their content in the `context.txt` file.
 - **Integrated UI**: Utilize a simple and intuitive webview panel within VS Code to select the files and directories to be included.
 - **Status Bar Integration**: Easily access the context generation command from the status bar.

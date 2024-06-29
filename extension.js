@@ -178,7 +178,7 @@ function getWebviewContent(files) {
 }
 
 function activate(context) {
-  console.log('Congratulations, your extension "codepeek" is now active!');
+  console.log('Congratulations, "codepeek" is now active!');
 
   const generateContextCommand = vscode.commands.registerCommand(
     'codepeek.generateContext',
