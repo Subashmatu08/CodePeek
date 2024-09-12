@@ -14,15 +14,30 @@
   "activationEvents": [
     "*"
   ],
-  "main": "./extension.js",
   "contributes": {
     "commands": [
       {
         "command": "codepeek.generateContext",
-        "title": "Create Context"
+        "title": "CodePeek: Generate Context"
+      },
+      {
+        "command": "codepeek.generateTerminalContext",
+        "title": "CodePeek: Generate Terminal Context"
       }
-    ]
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "CodePeek Configuration",
+      "properties": {
+        "codepeek.promptText": {
+          "type": "string",
+          "default": "",
+          "description": "Your terminal prompt text or a unique part of it. The extension will use this text to identify the last command."
+        }
+      }
+    }
   },
+  "main": "./extension.js",
   "scripts": {
     "lint": "eslint .",
     "pretest": "npm run lint",
