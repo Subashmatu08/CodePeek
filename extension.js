@@ -14,6 +14,10 @@ const IgnoreDirectories = [
   'out',
   'tmp',
   'temp',
+  '__pycache__',
+  'logs',
+  'venv',
+  'target',
 ];
 
 const IgnoreFiles = [
@@ -25,19 +29,133 @@ const IgnoreFiles = [
   '.eslintcache',
   '.gitignore',
   'context.txt',
+  '.npmrc',
+  'tsconfig.json',
 ];
 
+function shouldIgnore(fileName, stats) {
+  const ignoredExtensions = [
+    '.log',
+    '.pyc',
+    '.mp4',
+    '.avi',
+    '.mov',
+    '.jpg',
+    '.jpeg',
+    '.png',
+    '.gif',
+    '.svg',
+    '.mp3',
+    '.wav',
+    '.exe',
+    '.bin',
+    '.dll',
+    '.zip',
+    '.tar.gz',
+    '.pdf',
+    '.xlsx',
+    '.csv',
+  ];
+
+  const isDirectory = stats.isDirectory();
+
+  if (isDirectory) {
+    return IgnoreDirectories.includes(fileName);
+  } else {
+    return (
+      ignoredExtensions.some((ext) => fileName.endsWith(ext)) ||
+      IgnoreFiles.includes(fileName)
+    );
+  }
+}
+
+// const IgnoreFiles = [
+//   '.DS_Store',
+//   'Thumbs.db',
+//   '.env',
+//   'package-lock.json',
+//   'yarn.lock',
+//   '.eslintcache',
+//   '.gitignore',
+//   'context.txt',
+//   '*.log',
+//   '*.pyc',
+//   '.npmrc',
+//   'tsconfig.json',
+//   '*.mp4',
+//   '*.avi',
+//   '*.mov',
+//   '*.jpg',
+//   '*.jpeg',
+//   '*.png',
+//   '*.gif',
+//   '*.svg',
+//   '*.mp3',
+//   '*.wav',
+//   '*.exe',
+//   '*.bin',
+//   '*.dll',
+//   '*.zip',
+//   '*.tar.gz',
+//   '*.pdf',
+//   '*.xlsx',
+//   '*.csv',
+// ];
+
+// function getFileStructure(dirPath, indent = '') {
+//   let structure = '';
+//   const files = fs.readdirSync(dirPath);
+
+//   for (const file of files) {
+//     if (IgnoreDirectories.includes(file) || IgnoreFiles.includes(file)) {
+//       continue;
+//     }
+
+//     const filePath = path.join(dirPath, file);
+//     const stats = fs.statSync(filePath);
+
+//     if (stats.isDirectory()) {
+//       structure += `${indent}📁 ${file}\n`;
+//       structure += getFileStructure(filePath, indent + '  ');
+//     } else {
+//       structure += `${indent}📄 ${file}\n`;
+//     }
+//   }
+//   return structure;
+// }
+
+// function getFilesAndFolders(dirPath, indent = '') {
+//   let items = [];
+//   const files = fs.readdirSync(dirPath);
+
+//   for (const file of files) {
+//     if (IgnoreDirectories.includes(file) || IgnoreFiles.includes(file)) {
+//       continue;
+//     }
+
+//     const filePath = path.join(dirPath, file);
+//     const stats = fs.statSync(filePath);
+
+//     if (stats.isDirectory()) {
+//       items.push({ type: 'directory', name: file, path: filePath, indent });
+//       items = items.concat(getFilesAndFolders(filePath, indent + '  '));
+//     } else {
+//       items.push({ type: 'file', name: file, path: filePath, indent });
+//     }
+//   }
+//   return items;
+// }
 function getFileStructure(dirPath, indent = '') {
   let structure = '';
   const files = fs.readdirSync(dirPath);
 
   for (const file of files) {
-    if (IgnoreDirectories.includes(file) || IgnoreFiles.includes(file)) {
-      continue;
-    }
-
     const filePath = path.join(dirPath, file);
     const stats = fs.statSync(filePath);
+
+    if (shouldIgnore(file, stats)) {
+      continue;
+    }
 
     if (stats.isDirectory()) {
       structure += `${indent}📁 ${file}\n`;
@@ -54,12 +172,12 @@ function getFilesAndFolders(dirPath, indent = '') {
   const files = fs.readdirSync(dirPath);
 
   for (const file of files) {
-    if (IgnoreDirectories.includes(file) || IgnoreFiles.includes(file)) {
-      continue;
-    }
-
     const filePath = path.join(dirPath, file);
     const stats = fs.statSync(filePath);
+
+    if (shouldIgnore(file, stats)) {
+      continue;
+    }
 
     if (stats.isDirectory()) {
       items.push({ type: 'directory', name: file, path: filePath, indent });
