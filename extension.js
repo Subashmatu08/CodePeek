@@ -44,6 +44,7 @@ function shouldIgnore(fileName, stats) {
     '.jpeg',
     '.png',
     '.gif',
+    '.ico',
     '.svg',
     '.mp3',
     '.wav',
@@ -78,28 +79,6 @@ function shouldIgnore(fileName, stats) {
 //   '.eslintcache',
 //   '.gitignore',
 //   'context.txt',
-//   '*.log',
-//   '*.pyc',
-//   '.npmrc',
-//   'tsconfig.json',
-//   '*.mp4',
-//   '*.avi',
-//   '*.mov',
-//   '*.jpg',
-//   '*.jpeg',
-//   '*.png',
-//   '*.gif',
-//   '*.svg',
-//   '*.mp3',
-//   '*.wav',
-//   '*.exe',
-//   '*.bin',
-//   '*.dll',
-//   '*.zip',
-//   '*.tar.gz',
-//   '*.pdf',
-//   '*.xlsx',
-//   '*.csv',
 // ];
 
 // function getFileStructure(dirPath, indent = '') {
@@ -276,6 +255,7 @@ function getWebviewContent(files) {
         style="cursor:pointer;
         border:1px solid white; 
         padding:0.5rem;
+        margin-bottom: 1rem;
         background-color: grey; 
         border-radius: 5px;" 
         onclick="generate()">Create Context ✨</button>
@@ -324,7 +304,7 @@ function saveTerminalContext(dirPath, terminalSessions) {
   const finalContent = `${structure}\n${fileContents}`;
 
   try {
-    fs.writeFileSync(outputPath, finalContent); // Overwrite instead of append
+    fs.writeFileSync(outputPath, finalContent);
     console.log(`Terminal context saved to: ${outputPath}`);
     vscode.window.showInformationMessage(
       `Terminal context saved to ${path.basename(
@@ -342,20 +322,16 @@ function saveTerminalContext(dirPath, terminalSessions) {
 }
 
 async function getTerminalOutput(terminal) {
-  // Store the current clipboard content
   const previousClipboard = await vscode.env.clipboard.readText();
 
-  // Select all and copy terminal output
   terminal.show(true);
   await vscode.commands.executeCommand('workbench.action.terminal.selectAll');
   await vscode.commands.executeCommand(
     'workbench.action.terminal.copySelection'
   );
 
-  // Read the terminal output from the clipboard
   const clipboardContent = await vscode.env.clipboard.readText();
 
-  // Restore the previous clipboard content
   await vscode.env.clipboard.writeText(previousClipboard);
 
   return clipboardContent.trim();
@@ -368,18 +344,15 @@ function getLastSession(terminalOutput) {
     .get('promptText');
 
   if (!promptText) {
-    // If no prompt text is provided, return the entire output as one session
     return {
       command: '',
       output: terminalOutput,
     };
   }
 
-  // Find the last occurrence of the prompt text
   const lastPromptIndex = terminalOutput.lastIndexOf(promptText);
 
   if (lastPromptIndex === -1) {
-    // Prompt text not found, return entire output
     return {
       command: '',
       output: terminalOutput,
@@ -449,12 +422,10 @@ function activate(context) {
   myStatusBarItem.show();
   context.subscriptions.push(myStatusBarItem);
 
-  // Listen for file save events
   vscode.workspace.onDidSaveTextDocument(() => {
     extractTerminalOnSave();
   });
 
-  // Command to manually trigger terminal context capture
   const generateTerminalContextCommand = vscode.commands.registerCommand(
     'codepeek.generateTerminalContext',
     function () {
@@ -463,7 +434,6 @@ function activate(context) {
   );
   context.subscriptions.push(generateTerminalContextCommand);
 
-  // Status bar item for terminal context
   const terminalContextStatusBarItem = vscode.window.createStatusBarItem(
     vscode.StatusBarAlignment.Right,
     99
