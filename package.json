@@ -32,7 +32,7 @@
         "codepeek.promptText": {
           "type": "string",
           "default": "",
-          "description": "Your terminal prompt text or a unique part of it. The extension will use this text to identify the last command."
+          "description": "Your terminal prompt text. The extension will use this text to identify the last command."
         }
       }
     }
