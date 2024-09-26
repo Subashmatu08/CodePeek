@@ -338,7 +338,6 @@ async function getTerminalOutput(terminal) {
 }
 
 function getLastSession(terminalOutput) {
-  // Get user-defined prompt text
   const promptText = vscode.workspace
     .getConfiguration('codepeek')
     .get('promptText');

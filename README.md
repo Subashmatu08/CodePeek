@@ -45,7 +45,7 @@ Welcome to **CodePeek**, the ultimate Visual Studio Code extension that revoluti
 
 3. **Manual Capture**:
 
-   - You can also manually capture the terminal context by clicking on **Terminal Context 📋** in the status bar or using the command **Generate Terminal Context** from the Command Palette.
+   - You can also manually capture the terminal context by clicking on **Terminal Context 📋** in the status bar or using the command **Generate Terminal Context** from the Command Palette (`Ctrl/Cmd + shift + p`).
 
 4. **Default Behavior Without Prompt Text**:
 
